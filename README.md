@@ -33,6 +33,8 @@ vim +BundleInstall +qall
 
 Next, you should also download and instlall a patched version of your favorite programming font, to be used with vim-powerline (https://github.com/Lokaltog/vim-powerline). You can choose one here: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 
+Finally, this repository also contains my own .bashrc / .bashprofile with my own set of useful functions and more. You probably don't want to install this, since it's suited to the locations where I installed some software. Nevertheless, have a look in there to see if there's something interesting for you.
+
 ## Documentation
 
 The setup has the following shortcuts:
