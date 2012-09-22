@@ -238,8 +238,8 @@ autocmd FileType python set expandtab
 
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
-" set guifont=Menlo:16h
-set guifont=Monaco:h13
+set guifont=Menlo:18h
+" set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -432,3 +432,7 @@ autocmd BufWinEnter,FileType html,css            set expandtab smarttab tabstop=
 
 
 nmap <leader>e :NERDTreeToggle<CR>
+
+" Change the Sparkup mapping to something that doesn't collide with our emacs
+" bindings
+let g:sparkupExecuteMapping = '<c-l>'
