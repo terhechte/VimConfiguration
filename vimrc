@@ -238,7 +238,7 @@ autocmd FileType python set expandtab
 
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
-set guifont=Menlo:18h
+set guifont=Menlo:h18
 " set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
