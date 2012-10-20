@@ -31,7 +31,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle "pangloss/vim-javascript"
 Bundle "briangershon/html5.vim"
-Bundle "django.vim"
+" Bundle "django.vim"
 Bundle "python.vim--Vasiliev"
 Bundle "indentpython.vim"
 let python_highlight_all=1  " Enable all plugin's highlighting.
@@ -39,14 +39,14 @@ let python_slow_sync=1  " For fast machines.
 let python_print_as_function=1  " Color 'print' function.
 
 " Snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'honza/snipmate-snippets'
 
-Bundle "garbas/vim-snipmate"
+" Bundle 'garbas/vim-snipmate'
 
 " ios.vim
-Bundle "eraserhd/vim-ios.git"
+" Bundle 'eraserhd/vim-ios.git'
 
 Bundle "AutoTag"
 
@@ -62,7 +62,7 @@ let g:showmarks_textother="\.\t"
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'AutoComplPop'
-Bundle 'FuzzyFinder'
+" Bundle 'FuzzyFinder'
 Bundle 'vim-json-bundle'
 Bundle 'quickfixstatus.vim'
 
@@ -79,12 +79,12 @@ set tags=./tags,./../tags,./*/tags
 " Color
 Bundle 'tomasr/molokai'
 Bundle 'sjl/badwolf'
-
+Bundle 'chriskempson/vim-tomorrow-theme'
 
 Bundle 'juvenn/mustache.vim'
 
 " Finally, nerdtree support
-Bundle 'scrooloose/nerdtree.git'
+" Bundle 'scrooloose/nerdtree.git'
 
 " bracket match using tab
 map <tab> %
@@ -172,6 +172,7 @@ set noswapfile
 
 set ts=4
 set sw=4
+set expandtab
 
 "fixdel
 
@@ -230,15 +231,14 @@ if has("mouse")
   set mouse=a
 endif
 
-set shell=/bin/bash
-
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python set expandtab
 
 
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
-set guifont=Menlo:h18
+" set guifont=Menlo:h18
+set guifont=SourceCodePro-Regular:h18
 " set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -375,7 +375,7 @@ nnoremap <leader>q gqip
 nnoremap <leader>v V`]
 
 
-set relativenumber
+set number
 
 " turn off scrolblars..
 " hide the right hand vertical scrollbar
@@ -436,3 +436,7 @@ nmap <leader>e :NERDTreeToggle<CR>
 " Change the Sparkup mapping to something that doesn't collide with our emacs
 " bindings
 let g:sparkupExecuteMapping = '<c-l>'
+
+" use jj for leaving insert mode.
+imap jj <ESC>
+
