@@ -17,20 +17,51 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'edsono/vim-matchit'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
+
+" Ultisnips
+Bundle 'guns/ultisnips'
+" <c-j> and <c-k> move to the next / previous part of the function call
+
+Bundle 'terhechte/syntastic'
 let g:syntastic_enable_signs=1  " Show sidebar signs.
-"let g:syntastic_auto_loc_list=1  " Auto open errors window upon detection.
+let g:syntastic_objc_config_file = '.clang_complete'
 set statusline+=%#warningmsg#  " Add Error ruler.
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 nnoremap <silent> ` :Errors<CR>
+let g:syntastic_objc_checker = 'clang'
+
+" Support for Clang Complete
+" requires installation of a recent version of clang.
+" I did: brew install --HEAD llvm --with-clang
+" with homebrew
+Bundle 'Rip-Rip/clang_complete'
+let g:clang_complete_auto = 0 "disalbe auto completion, alwauys <c x> <c o> to complete
+let g:clang_use_library = 1
+let g:clang_periodic_quickfix = 0
+let g:clang_close_preview = 1
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'ultisnips'
+" This might change depending on your installation
+let g:clang_exec = '/usr/local/bin/clang'
+let g:clang_library_path = '/usr/local/lib/libclang.dylib'
+
+" Far improved support for correct indentation for objc code in vim
+Bundle "b4winckler/vim-objc"
+
+" Adds support for :A to switch between header / implementation, and more
+Bundle 'eraserhd/vim-ios.git'
+" Keep compatibliy to XVim nc -> switches between implementation and interface
+cab nc A
 
 Bundle 'tpope/vim-surround'
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
+
 Bundle "pangloss/vim-javascript"
 Bundle "briangershon/html5.vim"
+
 " Bundle "django.vim"
 Bundle "python.vim--Vasiliev"
 Bundle "indentpython.vim"
@@ -38,15 +69,6 @@ let python_highlight_all=1  " Enable all plugin's highlighting.
 let python_slow_sync=1  " For fast machines.
 let python_print_as_function=1  " Color 'print' function.
 
-" Snipmate
-" Bundle 'MarcWeber/vim-addon-mw-utils'
-" Bundle 'tomtom/tlib_vim'
-" Bundle 'honza/snipmate-snippets'
-
-" Bundle 'garbas/vim-snipmate'
-
-" ios.vim
-" Bundle 'eraserhd/vim-ios.git'
 
 Bundle "AutoTag"
 
@@ -120,8 +142,6 @@ set ofu=syntaxcomplete#Complete
 let g:rubycomplete_buffer_loading = 0
 let g:rubycomplete_classes_in_global = 1
 
-" syntastic
-let g:syntastic_enable_signs=1
 
 let bash_is_sh=1
 
@@ -359,6 +379,9 @@ au FileType html set nolist  " list disables linebreak
 au FileType html set textwidth=0
 au FileType html set wrapmargin=0
 au FileType html set formatoptions=1
+
+" For taskpaper we want the tomorrow bright scheme.
+au FileType taskpaper colorscheme Tomorrow-Night-Eighties
 
 "syntax enable
 "if has('gui_running')
