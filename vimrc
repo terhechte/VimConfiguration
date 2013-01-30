@@ -463,3 +463,5 @@ let g:sparkupExecuteMapping = '<c-l>'
 " use jj for leaving insert mode.
 imap jj <ESC>
 
+" relative number for all buffers
+set relativenumber
