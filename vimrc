@@ -15,12 +15,22 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'edsono/vim-matchit'
-Bundle 'fholgado/minibufexpl.vim'
+" Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
+
+" Search within open buffers
+Bundle 'vim-scripts/buffergrep'
+"Bgrep /jhonka/  "find string 'jhonka' in all loaded buffers. 
+"Wgrep |foo|j  "find string 'foo' in all buffers currently on the screen, but don't jump to first match. 
+"Tgrep !bar!g  "find string 'bar' in all buffers visible in all tabpages, and list each occurance of 'bar', not just the first one on a line. 
 
 " Ultisnips
 Bundle 'guns/ultisnips'
 " <c-j> and <c-k> move to the next / previous part of the function call
+
+" Gundo for undotree visualization
+Bundle 'sjl/gundo.vim.git'
+" :GundoToggle
 
 Bundle 'terhechte/syntastic'
 let g:syntastic_enable_signs=1  " Show sidebar signs.
@@ -54,10 +64,51 @@ Bundle 'eraserhd/vim-ios.git'
 " Keep compatibliy to XVim nc -> switches between implementation and interface
 cab nc A
 
+" Better Objc Syntax highlighting
+Bundle 'jgoulah/cocoa.vim'
+" quicker way to do list methods
+cab lm ListMethods
+
 Bundle 'tpope/vim-surround'
-Bundle 'davidoc/taskpaper.vim'
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'davidoc/taskpaper.vim'
 Bundle 'kien/ctrlp.vim'
+
+" Colorschemes:
+Bundle 'croaker/mustang-vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
+Bundle 'sjl/badwolf'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'matthewtodd/vim-twilight'
+Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+" Carbonight.vim
+" Earthsong.vim
+" EarthsongLight.vim
+" FreshCut.vim
+" Frontier.vim
+" Goldfish.vim
+" Grunge.vim
+" Iceberg.vim
+" Laravel.vim
+" LaravelDarker.vim
+" Lavender.vim
+" Mellow.vim
+" Patriot.vim
+" Peacock.vim
+" Potpourri.vim
+" Revelation.vim
+" Slime.vim
+" Snappy.vim
+" SnappyLight.vim
+" Sourlick.vim
+" Spearmint.vim
+" Stark.vim
+" Userscape.vim
+" Yule.vim
+
 
 Bundle "pangloss/vim-javascript"
 Bundle "briangershon/html5.vim"
@@ -69,6 +120,15 @@ let python_highlight_all=1  " Enable all plugin's highlighting.
 let python_slow_sync=1  " For fast machines.
 let python_print_as_function=1  " Color 'print' function.
 
+
+Bundle "xolox/vim-notes"
+:let g:notes_directory = '~/Dropbox/vimnotes/'
+" :Note
+" or :edit note:todo
+" or "edit note:contentstore stuff
+" :SearchNotes keyword … searches for keywords and :SearchNotes /pattern/ searches for regular expressions
+" :RecentNotes command it will open a Vim buffer that lists all your notes grouped by the day they were edited, starting with your most recently edited note.
+" To show a list of all notes that contains @tags you can use the :ShowTaggedNotes command.
 
 Bundle "AutoTag"
 
@@ -96,12 +156,7 @@ let g:Powerline_cache_enabled = 1
 
 " Tagbar
 Bundle 'majutsushi/tagbar' 
-set tags=./tags,./../tags,./*/tags
-
-" Color
-Bundle 'tomasr/molokai'
-Bundle 'sjl/badwolf'
-Bundle 'chriskempson/vim-tomorrow-theme'
+set tags='./tags,./../tags,./*/tags'
 
 Bundle 'juvenn/mustache.vim'
 
@@ -158,7 +213,7 @@ set gcr=n:blinkon0
 set undofile
 
 " show a colored column at 85 characters
-set colorcolumn=120
+set colorcolumn=80
 
 set list
 set listchars=tab:▸\ ,eol:¬
@@ -218,7 +273,7 @@ hi! link ShowMarksHLm LineNr
 
 let mapleader = ","
 
-nmap <leader>t :TagbarToggle<CR>
+"nmap <leader>t :TagbarToggle<CR>
 
 " highlight trailing whitespace  
 set listchars=tab:⟶⋅,trail:·,eol:↵
@@ -238,14 +293,14 @@ vmap <leader>/ :call NERDComment(0, "toggle")<cr>
 " nmap <leader>e :e **/
 
 " ,b to display current buffers list
-let g:miniBufExplVSplit = 25
-let g:miniBufExplorerMoreThanOne = 100
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-nmap <Leader>b :MiniBufExplorer<cr>
+" let g:miniBufExplVSplit = 25
+" let g:miniBufExplorerMoreThanOne = 100
+" let g:miniBufExplUseSingleClick = 1
+" let g:miniBufExplMapWindowNavVim = 1
+" let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+" let g:miniBufExplModSelTarget = 1
+" nmap <Leader>b :MiniBufExplorer<cr>
 
 if has("mouse")
   set mouse=a
@@ -258,7 +313,7 @@ autocmd FileType python set expandtab
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
 " set guifont=Menlo:h18
-set guifont=SourceCodePro-Regular:h18
+set guifont=SourceCodePro-Regular:h15
 " set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -463,5 +518,36 @@ let g:sparkupExecuteMapping = '<c-l>'
 " use jj for leaving insert mode.
 imap jj <ESC>
 
+" search in vimgrep for file under cursor
+command VGREP :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+command GREP :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%') | copen
+
+" Hide tabs
+set showtabline=0
+
 " relative number for all buffers
-set relativenumber
+set rnu
+
+" folding
+set foldmethod=syntax
+set foldcolumn=2
+" Make sure folds are being saved and loaded automatically (they're in ~/VimConfiguration/view)
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+" useful session options for storing / loading sessions
+set sessionoptions-=blank
+set sessionoptions-=globals
+set sessionoptions-=localoptions
+set sessionoptions-=options
+set sessionoptions-=resize
+set sessionoptions-=winpos
+set sessionoptions-=winsize
+set sessionoptions-=help
+
+" highlight the current buffer:
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cc=80,+1,+2,+3,+4,+5,+6
+    autocmd WinLeave * set colorcolumn=0
+augroup END
