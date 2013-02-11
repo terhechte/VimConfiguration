@@ -20,7 +20,7 @@ git clone git://github.com/terhechte/VimConfiguration.git
 ln -s VimConfiguration/vimrc .vimrc
 
 # Link the folder to .Vim
-ln -s dotvim .vim
+ln -s VimConfiguration .vim
 
 # Enter the folder, and check out the git modules
 cd VimConfiguration
