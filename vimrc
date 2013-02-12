@@ -18,11 +18,31 @@ Bundle 'edsono/vim-matchit'
 " Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
 
+" Gitv is a git viewer. fantastic, fantastic.
+Bundle 'gregsexton/gitv'
+" Select text, and do :Gitv! and it will show all the commits that affected
+" this line of code!
+" |gitv| has two distinct modes. Browser mode and file mode. The browser mode is
+" opened in a new tab and allows the repository history to be viewed for all
+" files. This is activated by running :Gitv without a '!'.
+" File mode is opened in a |preview-window| above the buffer you are currently in.
+" This view is tailored to act on the buffer that :Gitv! was run from, the
+" focused file.
+
 " Search within open buffers
 Bundle 'vim-scripts/buffergrep'
 "Bgrep /jhonka/  "find string 'jhonka' in all loaded buffers. 
 "Wgrep |foo|j  "find string 'foo' in all buffers currently on the screen, but don't jump to first match. 
 "Tgrep !bar!g  "find string 'bar' in all buffers visible in all tabpages, and list each occurance of 'bar', not just the first one on a line. 
+
+" Use Next Window / Previous Window (nwin/pwin) to toggle cocoa windows
+" https://github.com/b4winckler/macvim/blob/master/runtime/doc/gui_mac.txt
+cab nwin maca _cycleWindows:
+cab pwin maca _cycleWindowsBackwards:
+
+" Use Swipe Left / Swipe Right to switch Tabs
+nmap <SwipeLeft> gT
+nmap <SwipeRight> gt
 
 " Ultisnips
 Bundle 'guns/ultisnips'
@@ -313,7 +333,7 @@ autocmd FileType python set expandtab
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
 " set guifont=Menlo:h18
-set guifont=SourceCodePro-Regular:h15
+set guifont=SourceCodeProVim3-Regular:h15
 " set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -551,3 +571,28 @@ augroup BgHighlight
     autocmd WinEnter * set cc=80,+1,+2,+3,+4,+5,+6
     autocmd WinLeave * set colorcolumn=0
 augroup END
+
+" When editing non-English text it may be convenient to keep separate keyboard
+" layouts for normal and insert mode.  This is supported via the 'imd' option on
+" Mac OS X 10.5 or later (on 10.4 the 'imd' option support is not as useful as
+" it only switches between Roman and non-Roman input sources and it has been
+" known not to work very reliably).
+" 
+" For example: When 'noimd' is enabled (i.e. IM is enabled) the input source is
+" saved when toggling between normal and insert mode, so you can use a US layout
+" in normal mode then switch to insert mode and choose a Swedish layout.  When
+" you go back to normal mode the US layout will be selected and when you enter
+" insert mode the Swedish layout is selected.  This also works when searching
+" for text etc. see 'imc', 'imi', 'ims'.
+" 
+" Note that the layout used in normal mode is the layout used when 'noimd' is
+" set (i.e when IM is enabled).  If you find that MacVim switches to the
+" wrong layout when going back to normal mode, then select the layout you want
+" to use in normal mode and type :set imd followed by :set noimd.
+set noimd
+
+" A couple of defaults that should be written on my macvim systems:
+" defaults write org.vim.MacVim MMZoomBoth YES
+" defaults write org.vim.MacVim MMTextInsetBottom 5
+" defaults write org.vim.MacVim MMTextInsetLeft 5
+" defaults write org.vim.MacVim MMTextInsetTop 5
