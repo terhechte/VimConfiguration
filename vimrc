@@ -17,6 +17,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'edsono/vim-matchit'
 " Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
+"<leader>cs -> make comment out of selection in a ncie way
 
 " Gitv is a git viewer. fantastic, fantastic.
 Bundle 'gregsexton/gitv'
@@ -72,6 +73,7 @@ let g:clang_periodic_quickfix = 0
 let g:clang_close_preview = 1
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'ultisnips'
+" let g:clang_debug = 1
 " This might change depending on your installation
 let g:clang_exec = '/usr/local/bin/clang'
 let g:clang_library_path = '/usr/local/lib/libclang.dylib'
@@ -85,9 +87,9 @@ Bundle 'eraserhd/vim-ios.git'
 cab nc A
 
 " Better Objc Syntax highlighting
-Bundle 'jgoulah/cocoa.vim'
+"Bundle 'terhechte/cocoa.vim'
 " quicker way to do list methods
-cab lm ListMethods
+"cab lm ListMethods
 
 Bundle 'tpope/vim-surround'
 " Bundle 'davidoc/taskpaper.vim'
@@ -139,6 +141,34 @@ Bundle "indentpython.vim"
 let python_highlight_all=1  " Enable all plugin's highlighting.
 let python_slow_sync=1  " For fast machines.
 let python_print_as_function=1  " Color 'print' function.
+
+" Fantastic bundle to quickly jot down a bit of code and
+" execute it (like Textmate cmd+r). Supports a ton of different
+" languages (like python, c, objc, r, javascript, and much more)
+" though some require certain libraries to be installed.
+Bundle "vim-scripts/SingleCompile"
+" Compile Current: :SCCompile
+" Run Current: :SCCompileRun
+" View run: :SCViewResult
+" Run async: :SCCompileRunAsync
+
+" Conqueterm
+" Bundle "vim-scripts/Conque-Shell"
+" :ConqueTerm bash
+" :ConqueTerm mysql -h localhost -u joe -p sock_collection
+" :ConqueTermSplit <command>
+" :ConqueTermVSplit <command>
+" :ConqueTermTab <command>
+" Fast support (no unicode, no color)
+let g:ConqueTerm_FastMode = 1
+" Enter insert mode right when entering a buffer
+let g:ConqueTerm_InsertOnEnter = 1
+" Pause the terminal, and let me use vim keys to edit the content
+let g:ConqueTerm_ToggleKey = '<leader>cp'
+" Enable <C-w> in insert mode
+let g:ConqueTerm_CWInsert = 1
+" Send current selection to conque / terminal (i.e. for vim repl)
+let g:ConqueTerm_SendVisKey = '<leader>cs'
 
 
 Bundle "xolox/vim-notes"
