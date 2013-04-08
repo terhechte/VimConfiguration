@@ -33,6 +33,9 @@ vim +BundleInstall +qall
 
 Next, you should also download and instlall a patched version of your favorite programming font, to be used with vim-powerline (https://github.com/Lokaltog/vim-powerline). You can choose one here: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 
+There's an updated programming font in this bundle. It is a copy of the fantastic Adobe Source Code Pro font with a special  modification: 
+Vertical lines appear like one long line instead of looking dashed. This alone makes Vim (especially MacVim) much more pleasant to look at.
+
 Finally, this repository also contains my own .bashrc / .bashprofile with my own set of useful functions and more. You probably don't want to install this, since it's suited to the locations where I installed some software. Nevertheless, have a look in there to see if there's something interesting for you.
 
 ## Documentation
