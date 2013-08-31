@@ -45,6 +45,9 @@ cab pwin maca _cycleWindowsBackwards:
 nmap <SwipeLeft> gT
 nmap <SwipeRight> gt
 
+" Clojure
+Bundle 'guns/vim-clojure-static'
+
 " Ultisnips
 Bundle 'guns/ultisnips'
 " <c-j> and <c-k> move to the next / previous part of the function call
@@ -55,7 +58,7 @@ Bundle 'sjl/gundo.vim.git'
 
 Bundle 'terhechte/syntastic'
 let g:syntastic_enable_signs=1  " Show sidebar signs.
-let g:syntastic_objc_config_file = '.clang_complete'
+let g:syntastic_objc_config_file = '.syntastic_complete'
 set statusline+=%#warningmsg#  " Add Error ruler.
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -87,10 +90,11 @@ Bundle 'eraserhd/vim-ios.git'
 cab nc A
 
 " Better Objc Syntax highlighting
-"Bundle 'terhechte/cocoa.vim'
+Bundle 'terhechte/cocoa.vim'
 " quicker way to do list methods
-"cab lm ListMethods
+cab lm ListMethods
 
+let g:surround_no_insert_mappings=1
 Bundle 'tpope/vim-surround'
 " Bundle 'davidoc/taskpaper.vim'
 Bundle 'kien/ctrlp.vim'
@@ -170,9 +174,17 @@ let g:ConqueTerm_CWInsert = 1
 " Send current selection to conque / terminal (i.e. for vim repl)
 let g:ConqueTerm_SendVisKey = '<leader>cs'
 
+" Dash Integration
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+" ,da for looking up searching the word under the cursor
+nmap <silent> <leader>da <Plug>DashSearch
 
-Bundle "xolox/vim-notes"
-:let g:notes_directory = '~/Dropbox/vimnotes/'
+" Scala
+Bundle "derekwyatt/vim-scala"
+
+"Bundle "xolox/vim-notes"
+":let g:notes_directory = '~/Dropbox/vimnotes/'
 " :Note
 " or :edit note:todo
 " or "edit note:contentstore stuff
@@ -363,7 +375,8 @@ autocmd FileType python set expandtab
 " set guifont=Inconsolata:h16
 " set guifont=Monaco:h13
 " set guifont=Menlo:h18
-set guifont=SourceCodeProVim3-Regular:h15
+" set guifont=SourceCodeProVim3-Regular:h15
+set guifont=mplus-1mn-light:h13
 " set guifont=Monaco:h13
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -566,7 +579,13 @@ nmap <leader>e :NERDTreeToggle<CR>
 let g:sparkupExecuteMapping = '<c-l>'
 
 " use jj for leaving insert mode.
-imap jj <ESC>
+" imap jj <ESC>
+nmap <C-g> <ESC>
+imap <C-g> <ESC>
+vmap <C-g> <ESC>
+omap <C-g> <ESC>
+cmap <C-g> <ESC>
+vmap j
 
 " search in vimgrep for file under cursor
 command VGREP :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
