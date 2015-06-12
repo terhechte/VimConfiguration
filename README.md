@@ -1,3 +1,7 @@
+# Important Note
+
+> I've long since switched to Emacs + Evil Mode instead of Vim because I wanted to leverage Emacs plugin ecosystem and be able to write extensions in Lisp. Thus, while I still use Vim/This configuration for any terminal based editing, I'm not actively updating this configuration anymore. It is working fine for my use cases. This also means there'll be no updates, extensions, anymore. Several people forked this repo and are actively extending it. Have a look at the network to see the forks and use them instead.
+
 ## My Vundle based Vim Configuration.
 
 This exists mostly, so that I can easily clone it onto any machine I'm working on and so that all my machines same the same set of behaviours.
