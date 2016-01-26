@@ -11,92 +11,18 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'edsono/vim-matchit'
-" Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
 "<leader>cs -> make comment out of selection in a ncie way
-
-" Gitv is a git viewer. fantastic, fantastic.
-Bundle 'gregsexton/gitv'
-" Select text, and do :Gitv! and it will show all the commits that affected
-" this line of code!
-" |gitv| has two distinct modes. Browser mode and file mode. The browser mode is
-" opened in a new tab and allows the repository history to be viewed for all
-" files. This is activated by running :Gitv without a '!'.
-" File mode is opened in a |preview-window| above the buffer you are currently in.
-" This view is tailored to act on the buffer that :Gitv! was run from, the
-" focused file.
-
-" Search within open buffers
-Bundle 'vim-scripts/buffergrep'
-"Bgrep /jhonka/  "find string 'jhonka' in all loaded buffers. 
-"Wgrep |foo|j  "find string 'foo' in all buffers currently on the screen, but don't jump to first match. 
-"Tgrep !bar!g  "find string 'bar' in all buffers visible in all tabpages, and list each occurance of 'bar', not just the first one on a line. 
-
-" Use Next Window / Previous Window (nwin/pwin) to toggle cocoa windows
-" https://github.com/b4winckler/macvim/blob/master/runtime/doc/gui_mac.txt
-cab nwin maca _cycleWindows:
-cab pwin maca _cycleWindowsBackwards:
-
-" Use Swipe Left / Swipe Right to switch Tabs
-nmap <SwipeLeft> gT
-nmap <SwipeRight> gt
-
-" Clojure
-Bundle 'guns/vim-clojure-static'
-
-" Ultisnips
-Bundle 'guns/ultisnips'
-" <c-j> and <c-k> move to the next / previous part of the function call
 
 " Gundo for undotree visualization
 Bundle 'sjl/gundo.vim.git'
 " :GundoToggle
 
-Bundle 'terhechte/syntastic'
-let g:syntastic_enable_signs=1  " Show sidebar signs.
-let g:syntastic_objc_config_file = '.syntastic_complete'
-set statusline+=%#warningmsg#  " Add Error ruler.
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-nnoremap <silent> ` :Errors<CR>
-let g:syntastic_objc_checker = 'clang'
-
-" Support for Clang Complete
-" requires installation of a recent version of clang.
-" I did: brew install --HEAD llvm --with-clang
-" with homebrew
-Bundle 'Rip-Rip/clang_complete'
-let g:clang_complete_auto = 0 "disalbe auto completion, alwauys <c x> <c o> to complete
-let g:clang_use_library = 1
-let g:clang_periodic_quickfix = 0
-let g:clang_close_preview = 1
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'ultisnips'
-" let g:clang_debug = 1
-" This might change depending on your installation
-let g:clang_exec = '/usr/local/bin/clang'
-let g:clang_library_path = '/usr/local/lib/libclang.dylib'
-
-" Far improved support for correct indentation for objc code in vim
-Bundle "b4winckler/vim-objc"
-
-" Adds support for :A to switch between header / implementation, and more
-Bundle 'eraserhd/vim-ios.git'
-" Keep compatibliy to XVim nc -> switches between implementation and interface
-cab nc A
-
-" Better Objc Syntax highlighting
-Bundle 'terhechte/cocoa.vim'
-" quicker way to do list methods
-cab lm ListMethods
-
 let g:surround_no_insert_mappings=1
 Bundle 'tpope/vim-surround'
-" Bundle 'davidoc/taskpaper.vim'
 Bundle 'kien/ctrlp.vim'
 
 " Colorschemes:
@@ -110,87 +36,15 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'matthewtodd/vim-twilight'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
-" Carbonight.vim
-" Earthsong.vim
-" EarthsongLight.vim
-" FreshCut.vim
-" Frontier.vim
-" Goldfish.vim
-" Grunge.vim
-" Iceberg.vim
-" Laravel.vim
-" LaravelDarker.vim
-" Lavender.vim
-" Mellow.vim
-" Patriot.vim
-" Peacock.vim
-" Potpourri.vim
-" Revelation.vim
-" Slime.vim
-" Snappy.vim
-" SnappyLight.vim
-" Sourlick.vim
-" Spearmint.vim
-" Stark.vim
-" Userscape.vim
-" Yule.vim
-
 
 Bundle "pangloss/vim-javascript"
 Bundle "briangershon/html5.vim"
 
-" Bundle "django.vim"
 Bundle "python.vim--Vasiliev"
 Bundle "indentpython.vim"
 let python_highlight_all=1  " Enable all plugin's highlighting.
 let python_slow_sync=1  " For fast machines.
 let python_print_as_function=1  " Color 'print' function.
-
-" Fantastic bundle to quickly jot down a bit of code and
-" execute it (like Textmate cmd+r). Supports a ton of different
-" languages (like python, c, objc, r, javascript, and much more)
-" though some require certain libraries to be installed.
-Bundle "vim-scripts/SingleCompile"
-" Compile Current: :SCCompile
-" Run Current: :SCCompileRun
-" View run: :SCViewResult
-" Run async: :SCCompileRunAsync
-
-" Conqueterm
-" Bundle "vim-scripts/Conque-Shell"
-" :ConqueTerm bash
-" :ConqueTerm mysql -h localhost -u joe -p sock_collection
-" :ConqueTermSplit <command>
-" :ConqueTermVSplit <command>
-" :ConqueTermTab <command>
-" Fast support (no unicode, no color)
-let g:ConqueTerm_FastMode = 1
-" Enter insert mode right when entering a buffer
-let g:ConqueTerm_InsertOnEnter = 1
-" Pause the terminal, and let me use vim keys to edit the content
-let g:ConqueTerm_ToggleKey = '<leader>cp'
-" Enable <C-w> in insert mode
-let g:ConqueTerm_CWInsert = 1
-" Send current selection to conque / terminal (i.e. for vim repl)
-let g:ConqueTerm_SendVisKey = '<leader>cs'
-
-" Dash Integration
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-" ,da for looking up searching the word under the cursor
-nmap <silent> <leader>da <Plug>DashSearch
-
-" Scala
-Bundle "derekwyatt/vim-scala"
-
-"Bundle "xolox/vim-notes"
-":let g:notes_directory = '~/Dropbox/vimnotes/'
-" :Note
-" or :edit note:todo
-" or "edit note:contentstore stuff
-" :SearchNotes keyword … searches for keywords and :SearchNotes /pattern/ searches for regular expressions
-" :RecentNotes command it will open a Vim buffer that lists all your notes grouped by the day they were edited, starting with your most recently edited note.
-" To show a list of all notes that contains @tags you can use the :ShowTaggedNotes command.
 
 Bundle "AutoTag"
 
@@ -206,24 +60,16 @@ let g:showmarks_textother="\.\t"
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'AutoComplPop'
-" Bundle 'FuzzyFinder'
 Bundle 'vim-json-bundle'
 Bundle 'quickfixstatus.vim'
 
 " Customizations
 " Powerline
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
-
-" Tagbar
-Bundle 'majutsushi/tagbar' 
-set tags='./tags,./../tags,./*/tags'
+" Bundle 'Lokaltog/vim-powerline'
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_cache_enabled = 1
 
 Bundle 'juvenn/mustache.vim'
-
-" Finally, nerdtree support
-" Bundle 'scrooloose/nerdtree.git'
 
 " bracket match using tab
 map <tab> %
@@ -232,15 +78,6 @@ map <tab> %
 
 filetype plugin indent on     " required!
 "
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
 syntax on
 filetype plugin indent on
 
@@ -282,7 +119,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " highlihgt the file name
 hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=Blue guibg=#44aa00
-set statusline=%<%1*%f%*\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%1*%f%*\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 
 set textwidth=0         " Do not wrap words (insert)
 set wrap              " Do not wrap words (view)
@@ -451,11 +288,12 @@ if has("gui_running")
   set background=dark
   set nonu
 else
-  colorscheme molokai
+  colorscheme badwolf
   set background=dark
 
   set nonu
 endif
+set nonu
 
 set encoding=utf8
 
@@ -497,17 +335,6 @@ au FileType html set nolist  " list disables linebreak
 au FileType html set textwidth=0
 au FileType html set wrapmargin=0
 au FileType html set formatoptions=1
-
-" For taskpaper we want the tomorrow bright scheme.
-au FileType taskpaper colorscheme Tomorrow-Night-Eighties
-
-"syntax enable
-"if has('gui_running')
-    "set background=light
-"else
-    "set background=dark
-"endif
-"colorscheme solarized
 
 " This next mapping imitates TextMates Ctrl+Q function to re-hardwrap paragraphs of text:
 nnoremap <leader>q gqip
